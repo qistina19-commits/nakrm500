@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartKitchen AI | Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+        body { font-family: 'Inter', sans-serif; background:  #E8E1D4; color: #fff; }
+        .glass { background: #2E5E4E; backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .bg-glow { position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, #000000 0%, transparent 70%); opacity: 0.15; filter: blur(100px); z-index: -1; }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <nav class="flex justify-between items-center py-6 px-8 glass mb-8 rounded-2xl mx-auto max-w-6xl mt-4">
+    <div class="font-bold text-xl">SmartKitchen AI</div>
+    <div class="flex gap-6 text-sm text-gray-400">
+        <a href="dashboard.html" class="hover:text-white">Dashboard</a>
+        <a href="inventory_rifqah.html" class="hover:text-white">Inventory</a>
+        <a href="waste_mia.html" class="hover:text-white">Waste</a>
+        <a href="aidecision.html" class="hover:text-white">AI Engine</a>
+        <a href="purchasing.html" class="hover:text-white">Purchasing</a>
+        <a href="reports.html" class="hover:text-white">Reports</a>
+        <a href="settings_mia.html" class="hover:text-white">Settings</a>
+    </div>
+    <a href="index.html" class="text-xs bg-white/10 px-4 py-2 rounded-full hover:bg-white/20">Sign Out</a>
+</nav>
+
+
+    <div class="bg-glow top-0 left-0"></div>
+    <div class="bg-glow bottom-0 right-0"></div>
+
+    <div class="glass w-full max-w-[400px] p-8 rounded-[32px] shadow-2xl transition-all duration-500" id="loginCard">
+        <div class="text-center mb-8">
+            <div class="w-16 h-16 bg-black rounded-2xl mx-auto mb-4 flex items-center justify-center text-2xl font-bold">SK</div>
+            <h1 class="text-2xl font-semibold">SmartKitchen AI</h1>
+            <p class="text-gray-400 text-sm">Predict. Prevent. Profit.</p>
+        </div>
+
+        <form id="loginForm" class="space-y-4">
+            <input type="email" placeholder="Email address" required class="w-full bg-white/5 border border-white/10 p-3 rounded-xl outline-none focus:border-white transition">
+            <input type="password" placeholder="Password" required class="w-full bg-white/5 border border-white/10 p-3 rounded-xl outline-none focus:border-white transition">
+            
+            <div class="flex justify-between text-xs text-gray-400">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="#" class="hover:text-white">Forgot password?</a>
+            </div>
+
+            <button type="submit" id="submitBtn" class="w-full bg-black text-white py-3 rounded-xl font-medium hover:bg-gray-900 transition">
+                Sign In
+            </button>
+        </form>
+    </div>
+
+    <script>
+        
+    const loginForm = document.getElementById('loginForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const card = document.getElementById('loginCard');
+
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        submitBtn.textContent = 'Authenticating...';
+        submitBtn.style.opacity = '0.5';
+
+        // Fake authentication delay
+        setTimeout(() => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                // --- THIS IS THE UPDATED LINE ---
+                window.location.href = "dashboard.html"; 
+                // --------------------------------
+            }, 500);
+        }, 1500);
+    });
+    </script>
+</body>
+</html>
